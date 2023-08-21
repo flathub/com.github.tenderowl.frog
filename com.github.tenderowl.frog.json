@@ -27,6 +27,17 @@
     ],
     "modules": [
         {
+          "name": "blueprint-compiler",
+          "buildsystem": "meson",
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+              "tag": "v0.10.0"
+            }
+          ]
+        },
+        {
           "name": "leptonica",
           "rm-configure": true,
           "config-opts": [
