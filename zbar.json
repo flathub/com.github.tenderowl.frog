@@ -1,0 +1,32 @@
+{
+  "name": "zbar",
+  "config-opts": [
+    "--without-qt",
+    "--without-qt5",
+    "--without-gtk",
+    "--without-xv",
+    "--without-imagemagick",
+    "--without-dbus",
+    "--disable-video",
+    "--without-java",
+    "--without-python",
+    "--with-doc=no",
+    "--disable-doc",
+    "--with-introspection=no",
+    "--enable-codes=qrcode"
+  ],
+  "sources": [
+    {
+      "type": "archive",
+      "url": "https://linuxtv.org/downloads/zbar/zbar-0.23.90.tar.gz",
+      "sha256": "ff857dd7e3dbe043dac3765b5182c91dfd0477800713a75d15287d797cee60fa"
+    },
+    {
+      "type": "script",
+      "dest-filename": "autogen.sh",
+      "commands": [
+        "autoreconf -vfi -W none"
+      ]
+    }
+  ]
+}
