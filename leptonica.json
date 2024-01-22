@@ -1,0 +1,13 @@
+{
+  "name": "leptonica",
+  "config-opts": [
+    "--disable-static"
+  ],
+  "sources": [
+    {
+      "type": "git",
+      "url": "https://github.com/DanBloomberg/leptonica.git",
+      "tag": "1.84.1"
+    }
+  ]
+}
