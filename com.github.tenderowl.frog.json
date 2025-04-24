@@ -1,7 +1,7 @@
 {
     "app-id" : "com.github.tenderowl.frog",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "46",
+    "runtime-version" : "48",
     "sdk" : "org.gnome.Sdk",
     "command" : "frog",
     "finish-args" : [
@@ -33,7 +33,7 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/jwestman/blueprint-compiler.git",
-                    "tag" : "v0.14.0"
+                    "tag" : "v0.16.0"
                 }
             ]
         },
@@ -51,7 +51,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/tenderowl/frog.git",
-                    "tag": "1.5.2"
+                    "tag": "1.6.0"
                 }
             ]
         }
