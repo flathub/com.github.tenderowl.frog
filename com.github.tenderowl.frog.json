@@ -29,6 +29,9 @@
             "config-opts": [
                 "--disable-static"
             ],
+            "license-files": [
+                "leptonica-license.txt"
+            ],
             "sources": [
                 {
                     "type": "git",
