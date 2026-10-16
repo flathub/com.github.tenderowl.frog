@@ -1,10 +1,10 @@
 {
-    "app-id" : "com.github.tenderowl.frog",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "50",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "frog",
-    "finish-args" : [
+    "app-id": "com.github.tenderowl.frog",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "51",
+    "sdk": "org.gnome.Sdk",
+    "command": "frog",
+    "finish-args": [
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
@@ -14,7 +14,7 @@
         "--talk-name=org.freedesktop.Notifications",
         "--filesystem=xdg-pictures"
     ],
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/cmake",
         "/lib/pkgconfig",
@@ -23,13 +23,103 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
-        "leptonica.json",
-        "tesseract.json",
-        "libportal.json",
-        "zbar.json",
+    "modules": [
+        {
+            "name": "leptonica",
+            "config-opts": [
+                "--disable-static"
+            ],
+            "license-files": [
+                "leptonica-license.txt"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/DanBloomberg/leptonica.git",
+                    "tag": "1.87.0",
+                    "commit": "13275a278eb55b5746e33f95fbf5a2c8f604b3ab",
+                    "x-checker-data": {
+                        "type": "git"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tesseract",
+            "config-opts": [
+                "--disable-static",
+                "--disable-graphics",
+                "--enable-legacy"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/tesseract-ocr/tesseract.git",
+                    "tag": "5.5.3",
+                    "x-checker-data": {
+                        "type": "git"
+                    },
+                    "commit": "db0ec62f81b0737fbbe184d8fea40af5738f8eef"
+                }
+            ],
+            "post-install": [
+                "chmod +x /app/bin/tesseract"
+            ]
+        },
+        {
+            "name": "libportal",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+                "-Ddocs=false",
+                "-Dtests=false",
+                "-Dvapi=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/libportal.git",
+                    "tag": "0.11.0",
+                    "commit": "fc4d62cfe131e8494c82f597f92b2234d584c367",
+                    "x-checker-data": {
+                        "is-important": true,
+                        "type": "git"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "zbar",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dx11=disabled",
+                "-Dpthread=true",
+                "-Ddoc=false",
+                "-Dvideo=false",
+                "-Ddbus=disabled",
+                "-Djpeg=enabled",
+                "-Dgir=false",
+                "-Dpython=no",
+                "-Dqt=false",
+                "-Dqt6=false",
+                "-Djava=disabled",
+                "-Dbuild_tests=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://linuxtv.org/downloads/zbar/zbar-0.23.95.tar.gz",
+                    "sha256": "7b0907a3114503e0a8fbd1c6bfdb61592e6ded79f68716d7ca673ddeb6a87e99",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/mchehab/zbar/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": ".tag_name | sub(\"^\"; \"https://linuxtv.org/downloads/zbar/zbar-\") | sub(\"$\"; \".tar.gz\")"
+                    }
+                }
+            ]
+        },
         "python3-modules.json",
-        "python3-gTTS.json",
         {
             "name": "frog",
             "builddir": true,
@@ -38,7 +128,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/tenderowl/frog.git",
-                    "tag": "1.6.0"
+                    "tag": "1.6.0",
+                    "commit": "40bea97f93017e42168aec71c2bb248094008b6a",
+                    "x-checker-data": {
+                        "is-main-source": true,
+                        "type": "git"
+                    }
                 }
             ]
         }

@@ -1,0 +1,10 @@
+# Use the following command to regenaret the Python modules
+# flatpak-pip-generator -r requirements.txt -o python3-modules --runtime=org.gnome.Sdk//51 --prefer-wheels=pillow
+
+loguru
+six
+posthog
+nanoid
+pytesseract
+pyzbar
+gTTS
